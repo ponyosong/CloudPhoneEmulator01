@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CloudPhone01UserEmulator01</string>
+    <string name="accessibility_service_label">service_label</string>
+    <string name="accessibility_service_description">xx service</string>
+</resources>
