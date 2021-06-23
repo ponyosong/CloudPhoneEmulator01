@@ -1,6 +1,6 @@
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:description="@string/accessibility_service_description"
-    android:packageNames="com.haxqer.cloudphone01useremulator01"
+    android:packageNames="com.ss.android.ugc.aweme"
     android:accessibilityEventTypes="typeViewClicked|typeViewFocused"
     android:accessibilityFlags="flagDefault"
     android:accessibilityFeedbackType="feedbackAllMask"

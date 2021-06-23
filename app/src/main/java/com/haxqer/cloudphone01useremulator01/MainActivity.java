@@ -14,21 +14,35 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static String TAG = "MainActivity";
-    Context context = getApplicationContext();
+    private static final String TAG = "Main Activity";
+    private static final String PackageName = "com.ss.android.ugc.aweme";
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.context = getApplicationContext();
 
-
+        findViewById(R.id.start_service).setOnClickListener(v -> startService());
+        findViewById(R.id.toast_test).setOnClickListener(v -> displayText());
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(PackageName);
+//        startActivity( launchIntent );
+    }
+
 
     private void startService() {
         if (!isServiceEnabled()) {
             Intent accessibleIntent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
             startActivity(accessibleIntent);
+        } else {
+            openTiktok();
         }
     }
 
@@ -38,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean isServiceEnabled() {
-        AccessibilityManager accessibilityManager =    (AccessibilityManager)getSystemService(Context.ACCESSIBILITY_SERVICE);
+        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
 
         List<AccessibilityServiceInfo> accessibilityServices =
                 accessibilityManager.getEnabledAccessibilityServiceList(
@@ -49,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    public void openTiktok() {
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage(PackageName);
+        startActivity(launchIntent);
     }
 }
